@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+database/
+data/raw/*
+!data/raw/.gitkeep
+outputs/
+.ipynb_checkpoints/
+notebooks/executed/

@@ -1,0 +1,20 @@
+{
+  "provider": "Bureau of Transportation Statistics (BTS), Reporting Carrier On-Time Performance",
+  "period": "2025-01",
+  "checked_on": "2026-11-03",
+  "url": "https://transtats.bts.gov/PREZIP/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2025_1.zip",
+  "zip_sha256": "868387dcedaef1b8d8392e608e642219fde50d594c3cf2094aec858167629ccf",
+  "zip_bytes": 27108664,
+  "csv_name": "On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2025_1.csv",
+  "csv_sha256": "d7c7d59452cad1215d9605e8ff350a4bad7282750765084fe57928a5ad275453",
+  "csv_bytes": 243177378,
+  "expected_rows": 539747,
+  "carriers": 14,
+  "airports": 329,
+  "cancelled": 16312,
+  "diverted": 1166,
+  "eligible": 522269,
+  "delayed": 98130,
+  "scope": "Reported domestic US flights, not all world flights or all US operators",
+  "definitions_url": "https://www.bts.gov/explore-topics-and-geography/topics/airline-time-performance-and-causes-flight-delays"
+}
