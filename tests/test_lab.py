@@ -1,5 +1,5 @@
 """All fixtures are SYNTHETIC; no network and no real flight records in unit tests."""
-import csv,hashlib,io,sqlite3,tempfile,unittest
+import csv,hashlib,io,sqlite3,tempfile,unittest,subprocess,sys,os
 from pathlib import Path
 from unittest.mock import patch
 import pandas as pd
@@ -147,4 +147,8 @@ class DownloadTests(unittest.TestCase):
             p=Path(d)/'data.zip';p.write_bytes(b'fixture')
             with self.assertRaises(ValueError):download(p)
             self.assertEqual(p.read_bytes(),b'fixture')
+class ConsoleTests(unittest.TestCase):
+    def test_vietnamese_with_legacy_output_encoding(self):
+        result=subprocess.run([sys.executable,'-c',"import flight_lab; print('Chuyến bay đến trễ')"],capture_output=True,env=dict(os.environ,PYTHONIOENCODING='cp1252'),cwd=ROOT)
+        self.assertEqual(result.returncode,0);self.assertIn('Chuyến bay đến trễ',result.stdout.decode('utf-8'))
 if __name__=='__main__':unittest.main()
