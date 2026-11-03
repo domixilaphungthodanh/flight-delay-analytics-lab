@@ -133,6 +133,12 @@ class AnalysisTests(unittest.TestCase):
     def test_selector_cancel(self):
         from flight_lab.cli import choose
         with patch('builtins.input',side_effect=['','q']),patch('builtins.print'):self.assertIsNone(choose(self.db,'carriers','carrier_id','reporting_code'))
+    def test_notebook_launcher_pins_project_root_and_file(self):
+        import run_flights
+        with patch('run_flights.prepare_environment',return_value=Path(sys.executable)),patch('run_flights.run') as execute,patch('builtins.print'):
+            self.assertEqual(run_flights.main(['--notebook','--db',str(self.db)]),0)
+        args=execute.call_args.args[0]
+        self.assertIn('--notebook-dir',args);self.assertEqual(args[-1],ROOT/'notebooks/02_analysis.ipynb');self.assertEqual(args[-2],ROOT)
 class DownloadTests(unittest.TestCase):
     def test_network_error_no_partial_file(self):
         from flight_lab.source import download

@@ -66,7 +66,7 @@ def main(argv=None):
             if args.notebook:
                 # The server and kernel both use this environment's Python interpreter.
                 print('Mở 02_analysis.ipynb; nếu thấy trang quản lý, chọn Files > notebooks > 02_analysis.ipynb.',flush=True)
-                run([python,'-m','notebook',ROOT/'notebooks/02_analysis.ipynb'],db=db)
+                run([python,'-m','notebook','--notebook-dir',ROOT,ROOT/'notebooks/02_analysis.ipynb'],db=db)
             else:run([python,'-m','flight_lab.cli','--db',db])
         return 0
     except (OSError,ValueError,subprocess.CalledProcessError,EOFError,KeyboardInterrupt) as exc:
